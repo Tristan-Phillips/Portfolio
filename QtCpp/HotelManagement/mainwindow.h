@@ -3,9 +3,12 @@
 
 #include <QMainWindow>
 #include <QPushButton>
-#include "bookroomdialog.h"
-#include "checkoutdialog.h"
+
 #include "hotel.h"
+#include "bookinginterface.h"
+#include "transactioninterface.h"
+#include "checkoutinterface.h"
+#include "availabilityinterface.h"
 
 class MainWindow : public QMainWindow
 {
@@ -14,10 +17,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    
+
 private slots:
     void on_pushButton_roomBooking_clicked();
     void on_pushButton_checkOut_clicked();
+    void on_pushButton_checkAvailability_clicked();
+    void on_pushButton_transactions_clicked();
 
 private:
     void setupUI();
@@ -30,9 +35,11 @@ private:
     QPushButton *m_pushButton_checkAvailability = new QPushButton("Check Availability");
     QPushButton *m_pushButton_transactions = new QPushButton("Transactions");
 
-    // Dialogs
+    // Objects
     Hotel *m_hotel;
-    BookRoomDialog *m_bookRoomDialog;
-    CheckOutDialog *m_checkOutDialog = new CheckOutDialog;
+    BookingInterface *m_bookingInterface;
+    TransactionInterface *m_transactionInterface;
+    CheckOutInterface *m_checkOutInterface;
+    AvailabilityInterface *m_availabilityInterface;
 };
 #endif // MAINWINDOW_H

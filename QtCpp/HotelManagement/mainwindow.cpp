@@ -6,11 +6,17 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    // Set up hotel
     this->setMinimumSize(800, 500);
     this->setWindowTitle("Desert Hotel");
     this->setWindowIcon(QIcon(":/src/img/deserthotel.png"));
-    m_hotel = new Hotel(10);
-    m_bookRoomDialog = new BookRoomDialog(m_hotel);
+
+    // Objects
+    m_hotel = new Hotel;
+    m_bookingInterface = new BookingInterface(m_hotel);
+    m_transactionInterface = new TransactionInterface(m_hotel);
+    m_checkOutInterface = new CheckOutInterface(m_hotel);
+    m_availabilityInterface = new AvailabilityInterface(m_hotel);
 
     setupConnections();
     styleQPushButtons();
@@ -19,20 +25,23 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    m_pushButton_checkAvailability->deleteLater();
-    m_pushButton_checkOut->deleteLater();
-    m_pushButton_roomBooking->deleteLater();
-    m_pushButton_transactions->deleteLater();
-}
-
-void MainWindow::on_pushButton_roomBooking_clicked()
-{
-    m_bookRoomDialog->display();
 }
 
 void MainWindow::on_pushButton_checkOut_clicked()
 {
-    m_checkOutDialog->display();
+    m_checkOutInterface->updateComboBoxRooms();
+    m_checkOutInterface->show();
+}
+
+void MainWindow::on_pushButton_checkAvailability_clicked()
+{
+    m_availabilityInterface->show();
+}
+
+void MainWindow::on_pushButton_transactions_clicked()
+{
+    m_transactionInterface->updateTransactions();
+    m_transactionInterface->show();
 }
 
 void MainWindow::setupUI()
@@ -135,7 +144,13 @@ void MainWindow::styleQPushButtons()
 
 void MainWindow::setupConnections()
 {
-    connect(m_pushButton_roomBooking, &QPushButton::clicked, this, &MainWindow::on_pushButton_roomBooking_clicked);
-    connect(m_pushButton_checkOut, &QPushButton::clicked, this, &MainWindow::on_pushButton_checkOut_clicked);
+    connect(m_pushButton_roomBooking, SIGNAL(clicked()), this, SLOT(on_pushButton_roomBooking_clicked()));
+    connect(m_pushButton_transactions, SIGNAL(clicked()), this, SLOT(on_pushButton_transactions_clicked()));
+    connect(m_pushButton_checkOut, SIGNAL(clicked()), this, SLOT(on_pushButton_checkOut_clicked()));
+    connect(m_pushButton_checkAvailability, SIGNAL(clicked()), this, SLOT(on_pushButton_checkAvailability_clicked()));
 }
 
+void MainWindow::on_pushButton_roomBooking_clicked()
+{
+    m_bookingInterface->show();
+}
