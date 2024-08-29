@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>html/about.html</file>
+        <file>html/help.html</file>
+        <file>images/backup.png</file>
+        <file>images/box_icon.ico</file>
+        <file>images/exit.png</file>
+        <file>images/help.png</file>
+        <file>images/info.png</file>
+        <file>images/restore.png</file>
+        <file>images/server_icon.ico</file>
+        <file>images/xml.png</file>
+        <file>images/splash.gif</file>
+        <file>images/felineinclogo.png</file>
+        <file>images/catsplash.png</file>
+        <file>css/style.css</file>
+    </qresource>
+</RCC>
