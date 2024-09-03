@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#container__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . ."
+      ". . . . . . . . . . . . . . . .";
+}
+
+.grid--cell {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.container__interface {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    & button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    }
+}
